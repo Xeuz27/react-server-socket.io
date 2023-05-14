@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 const path = require("path");
 const Socket = require('./sockets')
 const PORT = process.env.PORT || 8080;
+const cors = require('cors');
 
 class Server {
 
@@ -22,6 +23,7 @@ class Server {
 
   middlewares() {
     //desplegar directorio publico
+    this.app.use(cors())
     this.app.use( express.static( path.resolve( __dirname, "../public" ) ) );
   }
 
