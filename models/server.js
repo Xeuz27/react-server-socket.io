@@ -23,6 +23,10 @@ class Server {
 
   middlewares() {
     //desplegar directorio publico
+    this.app.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', 'https://react-server-socketio-production.up.railway.app');
+      next();
+    });
     this.app.use(cors({
       origin: 'https://react-server-socketio-production.up.railway.app',
       methods: ['GET', 'POST'],
