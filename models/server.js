@@ -23,7 +23,7 @@ class Server {
   middlewares() {
     //desplegar directorio publico
     const allowedOrigins = [
-      "http://127.0.0.1:5501",
+      // "http://127.0.0.1:5501",
       "https://react-server-socketio-production.up.railway.app",
     ];
     this.app.use((req, res, next) => {
