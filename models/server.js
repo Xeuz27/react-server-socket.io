@@ -24,24 +24,23 @@ class Server {
     //desplegar directorio publico
     const allowedOrigins = [
       "http://127.0.0.1:5501",
-      "https://react-server-socketio-production.up.railway.app/",
+      "https://react-server-socketio-production.up.railway.app",
     ];
     this.app.use((req, res, next) => {
       const origin = req.headers.origin;
-
+  
       if (allowedOrigins.includes(origin)) {
         res.setHeader("Access-Control-Allow-Origin", origin);
       }
-      // res.header("Access-Control-Allow-Origin", "*");
       next();
     });
-    this.app.use(
-      cors({
-        origin: allowedOrigins,
-        methods: ["GET", "POST"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-      })
-    );
+    // this.app.use(
+    //   cors({
+    //     origin: allowedOrigins,
+    //     methods: ["GET", "POST"],
+    //     allowedHeaders: ["Content-Type", "Authorization"],
+    //   })
+    // );
     this.app.use(express.static(path.resolve(__dirname, "../public")));
   }
 
