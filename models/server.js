@@ -22,11 +22,11 @@ class Server {
 
   middlewares() {
     //desplegar directorio publico
+    const allowedOrigins = [
+      "http://127.0.0.1:5501",
+      "https://react-server-socketio-production.up.railway.app/",
+    ];
     this.app.use((req, res, next) => {
-      const allowedOrigins = [
-        "http://127.0.0.1:5501",
-        "https://react-server-socketio-production.up.railway.app/",
-      ];
       const origin = req.headers.origin;
 
       if (allowedOrigins.includes(origin)) {
@@ -37,7 +37,7 @@ class Server {
     });
     this.app.use(
       cors({
-        origin: "*",
+        origin: allowedOrigins,
         methods: ["GET", "POST"],
         allowedHeaders: ["Content-Type", "Authorization"],
       })
